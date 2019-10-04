@@ -12,8 +12,4 @@
     <Folder Include="Implementation\Commands\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\database\Core.Database.csproj" />
-  </ItemGroup>
-
 </Project>
