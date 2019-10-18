@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Database.Tables;
@@ -11,5 +12,6 @@ namespace Core.Relationships.Interfaces.Services
     {
         Task<Relationship> Create(CreateRelationshipCommand command);
         void Delete(Guid id);
+        List<Relationship> GetList(Expression<Func<Relationship, bool>> func);
     }
 }

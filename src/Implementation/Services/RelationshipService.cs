@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -35,5 +36,8 @@ namespace Core.Relationships.Implementation.Services
                 item.IsDeleted = true;
             _beawreContext.SaveChanges();
         }
+
+        public List<Relationship> GetList(Expression<Func<Relationship, bool>> func) =>
+            _beawreContext.Relationship.Where(func).ToList();
     }
 }
