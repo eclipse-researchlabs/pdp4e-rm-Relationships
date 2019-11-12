@@ -13,5 +13,6 @@ namespace Core.Relationships.Interfaces.Services
         Task<Relationship> Create(CreateRelationshipCommand command);
         void Delete(Guid id);
         List<Relationship> GetList(Expression<Func<Relationship, bool>> func);
+        void Delete(Expression<Func<Relationship, bool>> func);
     }
 }

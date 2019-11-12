@@ -37,6 +37,12 @@ namespace Core.Relationships.Implementation.Services
             _beawreContext.SaveChanges();
         }
 
+        public void Delete(Expression<Func<Relationship, bool>> func)
+        {
+            _beawreContext.Relationship.FirstOrDefault(func).IsDeleted = true;
+            _beawreContext.SaveChanges();
+        }
+
         public List<Relationship> GetList(Expression<Func<Relationship, bool>> func) =>
             _beawreContext.Relationship.Where(func).ToList();
     }
