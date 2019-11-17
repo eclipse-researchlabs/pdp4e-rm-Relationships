@@ -11,7 +11,8 @@ namespace Core.Relationships.Interfaces.Services
     public interface IRelationshipService
     {
         Task<Relationship> Create(CreateRelationshipCommand command);
-        void Delete(Guid id);
+        void DeleteByAsset(Guid id);
+        void DeleteByRelation(Guid documentId, Guid taskId);
         List<Relationship> GetList(Expression<Func<Relationship, bool>> func);
         void Delete(Expression<Func<Relationship, bool>> func);
     }

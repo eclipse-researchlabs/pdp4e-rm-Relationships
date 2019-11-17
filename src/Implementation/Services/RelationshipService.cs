@@ -29,11 +29,17 @@ namespace Core.Relationships.Implementation.Services
 
         public async Task<Relationship> Create(CreateRelationshipCommand command) => await _mediator.Send(command);
 
-        public void Delete(Guid id)
+        public void DeleteByAsset(Guid id)
         {
             _beawreContext.Assets.FirstOrDefault(x => x.Id == id).IsDeleted = true;
             foreach (var item in _beawreContext.Relationship.Where(x => x.FromId == id && x.FromType == ObjectType.AssetGroup))
                 item.IsDeleted = true;
+            _beawreContext.SaveChanges();
+        }
+
+        public void DeleteByRelation(Guid documentId, Guid taskId)
+        {
+            _beawreContext.Relationship.FirstOrDefault(x => x.FromId == documentId && x.ToId == taskId).IsDeleted = true;
             _beawreContext.SaveChanges();
         }
 
