@@ -15,5 +15,6 @@ namespace Core.Relationships.Interfaces.Services
         void DeleteByRelation(Guid documentId, Guid taskId);
         List<Relationship> GetList(Expression<Func<Relationship, bool>> func);
         void Delete(Expression<Func<Relationship, bool>> func);
+        void DeleteHard(Expression<Func<Relationship, bool>> func);
     }
 }

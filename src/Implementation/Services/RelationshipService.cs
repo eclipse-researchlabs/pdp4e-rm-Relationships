@@ -50,6 +50,12 @@ namespace Core.Relationships.Implementation.Services
             _beawreContext.SaveChanges();
         }
 
+        public void DeleteHard(Expression<Func<Relationship, bool>> func)
+        {
+            _beawreContext.Relationship.RemoveRange(_beawreContext.Relationship.Where(func));
+            _beawreContext.SaveChanges();
+        }
+
         public List<Relationship> GetList(Expression<Func<Relationship, bool>> func) =>
             _beawreContext.Relationship.Where(func).ToList();
     }
