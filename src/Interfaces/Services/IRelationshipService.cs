@@ -16,5 +16,7 @@ namespace Core.Relationships.Interfaces.Services
         List<Relationship> GetList(Expression<Func<Relationship, bool>> func);
         void Delete(Expression<Func<Relationship, bool>> func);
         void DeleteHard(Expression<Func<Relationship, bool>> func);
+        Task<Relationship> CreateAsync(CreateRelationshipCommand command);
+        bool CreateBulk(List<Relationship> list);
     }
 }

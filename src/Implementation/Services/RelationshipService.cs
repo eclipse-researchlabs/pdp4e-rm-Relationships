@@ -28,6 +28,14 @@ namespace Core.Relationships.Implementation.Services
         }
 
         public async Task<Relationship> Create(CreateRelationshipCommand command) => await _mediator.Send(command);
+        public Task<Relationship> CreateAsync(CreateRelationshipCommand command) => _mediator.Send(command);
+
+        public bool CreateBulk(List<Relationship> list)
+        {
+            _beawreContext.Relationship.AddRange(list);
+            _beawreContext.SaveChanges();
+            return true;
+        }
 
         public void DeleteByAsset(Guid id)
         {
